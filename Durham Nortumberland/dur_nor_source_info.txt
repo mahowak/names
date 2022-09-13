@@ -1,0 +1,14 @@
+English name data was extracted from;
+
+
+https://www.galbithink.org/names/ncumb.txt
+
+in galbi_dur_nor_raw.txt
+
+The data we compiled by John Galbi (https://www.galbithink.org/names/engb1800.htm) from George Bell’s parish marriage register transcriptions for Northumberland and Durham. Fields: rn, placeid (see file names in source directories), year (of marriage), gname-r, gname, sex.
+
+As with the the Scotland data, the records were preprocessed to standardise alternate spellings of the smae name (e.g. Ann / Anne / Hanna) and to remove obvious bynames that had been mistranscribed as prefix-names (e.g. females named McVey). 
+
+The raw and preprocessed data are in the files 
+
+durham nor 1701-1800.xlsx

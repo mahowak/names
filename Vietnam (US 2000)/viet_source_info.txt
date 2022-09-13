@@ -1,0 +1,7 @@
+To make our estimate of the distribution of Vietnamese first (family) names in the US US 2000 census 2000, we first compiled a master list of names. To make this, two lists of frequent Vietnamese first (family) names (Lauderdale, & Kestenbaum, 2000; Taylor, Nguyen, Do, Li, & Yasui, 2011) were combined with a Vietnamese names list from Wikipedea. 
+
+
+The frequencies for these names in the population reporting as Asian in the US 2000 census (in US FAM 2000.csv) were then calculated.
+
+Original data is in viet usa 2000.xlsx
+

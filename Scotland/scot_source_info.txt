@@ -1,0 +1,19 @@
+Scottish name data was taken from;
+
+Crook, Alice Louise (2012) Personal naming patterns in Scotland, 1700 - 1800: a comparative study of the parishes of Beith, Dingwall, Earlston, and Govan. MPhil(R) thesis, University of Glasgow.
+
+http://theses.gla.ac.uk/4190/
+
+2012crookmphil.pdf
+
+the records were preprocessed to standardise alternate spellings of the smae name (e.g. Ann / Anne / Hanna) and to remove obvious bynames that had been mistranscribed as prefix-names (e.g. females named McVey). 
+
+The raw and preprocessed data are in the files 
+
+earlstone.xlsx
+
+govan.xlsx
+
+beith.xlsx
+
+dingwall.xlsx
