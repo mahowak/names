@@ -1,0 +1,25 @@
+country,variable,example,CountryImproved
+us,Family,Kanwisher,U.S.
+us,Given,Nancy,U.S.
+us,Given + Family Init.,Nancy K.,U.S.
+us,Given Init. + Family,N. Kanwisher,U.S.
+russia,Family,Kolmogorov,Russia
+russia,Given,Andrey,Russia
+russia,Given + Family Init.,Andrey K.,Russia
+russia,Given Init. + Family,A. Kolmogorov,Russia
+korean,Family,Lee,South Korea
+korean,Given,Hyun Jae,South Korea
+korean,Given + Family Init.,L. Hyun Jae,South Korea
+korean,Given Init. + Family,Lee H.,South Korea
+france,Family,Curie,France
+france,Given,Marie,France
+france,Given + Family Init.,Marie C.,France
+france,Given Init. + Family,M. Curie,France
+finland,Family,Tuomilehto,Finland
+finland,Given,Jaakko,Finland
+finland,Given + Family Init.,Jaakko T.,Finland
+finland,Given Init. + Family,J. Tuomilehto,Finland
+china,Family,Zhao,China
+china,Given,Yufen,China
+china,Given + Family Init.,Z. Yufen,China
+china,Given Init. + Family,Zhao Y.,China
