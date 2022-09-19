@@ -1,8 +1,8 @@
 library(tidyverse)
 library(poweRlaw)
 
-korea = read_csv("Korea/ korea.csv", col_names = NA)
-vietnam = read_csv("Vietnam (US 2000)/viet usa 2000.csv")
+korea = read_csv("Data/Korea/ korea.csv", col_names = NA)
+vietnam = read_csv("Data/Vietnam (US 2000)/viet usa 2000.csv")
 krank = rev(sort(korea$X6))[1:50]
 vietrank = rev(sort(vietnam$count))[1:50]
 plot(krank, vietrank)
@@ -10,13 +10,13 @@ cor(krank, vietrank)
 summary(lm(krank ~ vietrank))
 
 ###############################################
-beith = read_csv("Scotland/beith.csv", col_names = NA)
-dingwall = read_csv("Scotland/dingwall.csv", col_names = NA)
-govan = read_csv("Scotland/govan.csv", col_names = NA)
-earlstone = read_csv("Scotland/earlstone.csv", col_names = NA)
+beith = read_csv("Data/Scotland/beith.csv", col_names = NA)
+dingwall = read_csv("Data/Scotland/dingwall.csv", col_names = NA)
+govan = read_csv("Data/Scotland/govan.csv", col_names = NA)
+earlstone = read_csv("Data/Scotland/earlstone.csv", col_names = NA)
 
 ################################################
-usn = read_csv("yob2010.txt", col_names=F)
+usn = read_csv("Data/yob2010.txt", col_names=F)
 
 fins = read_csv("finnish_data/births.csv")
 fins_post1900 = filter(fins, birth_year > 1900) %>%
