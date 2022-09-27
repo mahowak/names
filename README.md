@@ -1,1 +1,3 @@
-# names
+# README for Ramscar & Mahowald
+
+## 

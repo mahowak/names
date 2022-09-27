@@ -52,9 +52,7 @@ p1 = ggplot(d.dupe.helper, aes(x=CountryImproved, y=value, alpha=IsClear, group=
   ylab("Number of Duplications") + xlab("") + 
   scale_alpha_discrete(range=c(.5, 1)) + 
   facet_grid( full.family ~ ., scales="free",space="free", drop=T) #+
-#scale_fill_manual(values=c("black", "purple")) +
-#scale_colour_manual(values=c("black", "purple"))
-ggsave("dupe_graph2.png", width=7, height=4)
+ggsave("imgs/dupe_graph2.png", width=7, height=4)
 
 
 maxdist = rep(1/max(table(d$country)), max(table(d$country)))
@@ -105,7 +103,7 @@ p2 = ggplot(d.ents, aes(x=first.ent, y=last.ent, label=country)) +
   xlab("given name + hereditary initial entropy\n(Charles D.)") + ylab("given initial + hereditary name entropy\n(C. Darwin)")+
   theme_bw(14) 
 
-png("double_scinames.png", width=1000, height=400)
+png("imgs/double_scinames.png", width=1000, height=400)
 grid.arrange(p1, p2, ncol=2)
 dev.off()
 
