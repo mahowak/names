@@ -32,6 +32,9 @@ min(d$birth_year)
 max(d$birth_year)
 summary(d$birth_year)
 
+nrow(d)
+length(unique(d$child_first_nameN))
+
 d$birth_year_cut = cut(d$birth_year, breaks = c(-Inf, 1730, 1780, 1830, 1880, Inf),
                        labels=c("up to 1730", "1730-1780", "1780-1830", "1830-1880", "post-1880"))
 
