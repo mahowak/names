@@ -1,4 +1,5 @@
 library(tidyverse)
+library(xtable)
 
 korea = read_csv("Data/Korea/ korea.csv", col_names = NA)
 vietnam = read_csv("Data/Vietnam (US 2000)/viet usa 2000.csv")
@@ -16,7 +17,17 @@ govan = read_csv("Data/Scotland/govan.csv", col_names = NA)
 earlstone = read_csv("Data/Scotland/earlstone.csv", col_names = NA)
 nengland = read_csv("Data/northern_england.csv", col_names = NA)
 ################################################
-usn = read_csv("Data/yob2010.txt", col_names=F)
+ca = read_csv("Data/CA.TXT", col_names=F) %>%
+  filter(X3 > 1980) %>%
+  group_by(X4) %>%
+  summarise(n=sum(X5)) %>%
+  arrange(-n)
+
+de = read_csv("Data/DE.TXT", col_names=F) %>%
+  filter(X3 > 1980) %>%
+  group_by(X4) %>%
+  summarise(n=sum(X5)) %>%
+  arrange(-n)
 
 fins = read_csv("finnish_data/births.csv")
 fins_post1900 = filter(fins, birth_year > 1900) %>%
@@ -63,7 +74,7 @@ sum.d %>%
 d = tibble(Korean=krank, `Vietnamese-American`=vietrank,
            Beith=beith$X4[1:50], Dingwall=dingwall$X4[1:50], 
            Govan=govan$X4[1:50], Earlstone=earlstone$X4[1:50],
-           US=usn$X3[1:50], 
+           CA=ca$n[1:50], DE= de$n[1:50],
            `Northern England` = nengland$X2[1:50],
            FinnsPost1900 = fins_post1900$name_count[1:50],
            FinnsPre1800 = fins_pre1800$name_count[1:50])
@@ -71,6 +82,8 @@ d = tibble(Korean=krank, `Vietnamese-American`=vietrank,
 
 ###################################################
 # SI plot pairwise
+
+d$Scottish = d$Dingwall + d$Govan + d$Beith + d$Earlstone
 ggplot(d, aes(x=Korean, y=`Vietnamese-American`)) + geom_point() + 
   theme_classic(12) + 
   geom_smooth(method=lm, se=F) + scale_x_log10() + scale_y_log10()
@@ -78,31 +91,28 @@ ggplot(d, aes(x=Korean, y=`Vietnamese-American`)) + geom_point() +
 d.g = d %>%
   gather(variable, value) %>%
   filter(variable %in% c("Northern England",
-                            "Dingwall",
+                            "Scottish",
                             "Korean",
                             "Vietnamese-American",
-                            "US")) %>%
+                            "CA"
+                         )) %>%
   group_by(variable) %>%
   mutate(r= rank(-value)) 
 d.g2 = rename(d.g, variable2 = variable, value2=value)
 d.g3 = left_join(d.g, d.g2) 
 d.g3 = mutate(d.g3, value = log10(value),
-              value2=log10(value2))
+               value2=log10(value2))
 
-ggplot(d.g3, aes(x=value, y=value2)) + geom_point() + 
+for (i in unique(d.g3$variable)) {
+p = ggplot(filter(d.g3, variable == i,
+              variable2 != i, r != 1), aes(x=value, y=value2)) + geom_point() + 
   theme_bw(12) + 
-  #geom_smooth(method=lm, se=F) + 
-  scale_x_log10() + scale_y_log10() + 
-  facet_grid(variable ~ variable2, scales = "free")  +
-  xlab("Log frequency") + ylab("Log frequency")
-ggsave("imgs/pairwise_sample.png", width=7, height=8)
+  facet_grid(variable ~ variable2) + #, scales = "free")  +
+  xlab("Log frequency") + ylab("Log frequency")   
+print(p)
+ggsave(paste0("imgs/", i, ".png"), width=6, height=3)
+}
 
-
-##################################################
-# SI plot pairwise
-ggplot(d, aes(x=Korean, y=`Vietnamese-American`)) + geom_point() + 
-  theme_classic(12) + 
-  geom_smooth(method=lm, se=F) + scale_x_log10() + scale_y_log10()
 
 d.g = d %>%
   gather(variable, value) %>%
@@ -146,7 +156,8 @@ ag2 = ggplot(d.sum,
                                  "Northern England" = "#B45F06",
                                  "FinnsPost1900" = "darkgray",
                                  "FinnsPre1800" = "gray",
-                                 "US" = "red"))
+                                 "CA" = "red",
+                                 "DE" = "pink"))
 ag2
 ggsave("imgs/proportion_relative_to_top.png", width=8, height=4)
 
